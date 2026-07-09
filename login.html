@@ -152,6 +152,21 @@
         .input-icon input {
             padding-left: 44px;
         }
+
+        .demo-info {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border: 1px solid #93c5fd;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            font-size: 13px;
+            color: #1e40af;
+        }
+
+        .demo-info strong {
+            display: block;
+            margin-bottom: 6px;
+        }
     </style>
 </head>
 <body>
@@ -163,6 +178,12 @@
             
             <h1>🔐 TinPhat ERP</h1>
             <p>Hệ Thống Quản Lý Doanh Nghiệp</p>
+            
+            <div class="demo-info">
+                <strong>📌 Tài Khoản Demo:</strong>
+                Admin: admin@tinphat.com<br>
+                Mật khẩu: 123456
+            </div>
             
             <form class="login-form" id="loginForm">
                 <div class="form-group">
@@ -180,7 +201,7 @@
                         <i class="fas fa-lock"></i>
                         <input type="password" id="password" name="password" placeholder="••••••••" required>
                     </div>
-                    <div class="error-message">Vui lòng nhập mật khẩu</div>
+                    <div class="error-message">Vui lòng nhập mật khẩu chính xác</div>
                 </div>
                 
                 <div class="remember-forgot">
@@ -202,6 +223,13 @@
     </div>
 
     <script>
+        // Demo credentials database
+        const credentials = {
+            'admin@tinphat.com': '123456',
+            'user@tinphat.com': '123456',
+            'manager@tinphat.com': '123456'
+        };
+
         const loginForm = document.getElementById('loginForm');
         const usernameInput = document.getElementById('username');
         const passwordInput = document.getElementById('password');
@@ -233,15 +261,16 @@
             if (passwordInput.value.trim() === '') {
                 passwordInput.parentElement.parentElement.classList.add('error');
                 isValid = false;
-            } else if (passwordInput.value.length < 6) {
-                passwordInput.parentElement.parentElement.classList.add('error');
-                passwordInput.parentElement.parentElement.querySelector('.error-message').textContent = 'Mật khẩu phải có ít nhất 6 ký tự';
-                isValid = false;
             } else {
                 passwordInput.parentElement.parentElement.classList.remove('error');
             }
 
             return isValid;
+        }
+
+        // Check credentials
+        function authenticateUser(username, password) {
+            return credentials[username] === password;
         }
 
         // Remove error on input
@@ -261,29 +290,42 @@
                 return;
             }
 
+            const username = usernameInput.value.trim();
+            const password = passwordInput.value.trim();
+
             const loginBtn = loginForm.querySelector('.btn-login');
             loginBtn.classList.add('loading');
             loginBtn.disabled = true;
 
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                // Simulate API call delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Verify credentials
+                if (!authenticateUser(username, password)) {
+                    passwordInput.parentElement.parentElement.classList.add('error');
+                    loginBtn.classList.remove('loading');
+                    loginBtn.disabled = false;
+                    return;
+                }
 
                 // Save credentials if remember me is checked
                 if (rememberCheckbox.checked) {
-                    localStorage.setItem('saved_username', usernameInput.value);
+                    localStorage.setItem('saved_username', username);
                 } else {
                     localStorage.removeItem('saved_username');
                 }
 
                 // Save login session
                 sessionStorage.setItem('user_logged_in', 'true');
-                sessionStorage.setItem('username', usernameInput.value);
+                sessionStorage.setItem('username', username);
                 sessionStorage.setItem('login_time', new Date().toISOString());
+                sessionStorage.setItem('user_role', 'admin');
 
                 // Show success
                 loginForm.style.display = 'none';
-                document.querySelector('.login-box p').style.display = 'none';
+                document.querySelectorAll('.login-box p').forEach(p => p.style.display = 'none');
+                document.querySelector('.demo-info').style.display = 'none';
                 successIcon.style.display = 'block';
 
                 // Redirect after 1.5 seconds
