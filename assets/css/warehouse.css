@@ -1,43 +1,98 @@
 .warehouse-container {
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.warehouse-container h2 {
+  margin-bottom: 24px;
+  color: var(--text-color);
 }
 
 .warehouse-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .warehouse-card {
-  border: 1px solid var(--border-color);
-  padding: 20px;
-  border-radius: 4px;
+  border: 1.5px solid var(--border-color);
+  padding: 24px;
+  border-radius: 10px;
+  background: white;
+  transition: var(--transition);
+}
+
+.warehouse-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
 }
 
 .warehouse-title {
   font-size: 18px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-color);
+}
+
+.warehouse-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 16px;
+  line-height: 1.6;
 }
 
 .inventory-level {
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.inventory-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-color);
+  white-space: nowrap;
 }
 
 .progress-bar {
   flex: 1;
-  height: 8px;
-  background-color: var(--bg-color);
-  border-radius: 4px;
+  height: 10px;
+  background: #e2e8f0;
+  border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
-  background-color: var(--primary-color);
+  background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-percent {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--primary-color);
 }

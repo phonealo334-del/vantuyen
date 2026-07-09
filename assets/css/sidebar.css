@@ -1,18 +1,53 @@
 .sidebar {
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.sidebar.collapsed {
+  width: 80px;
+}
+
+.sidebar.collapsed .menu a span {
+  display: none;
 }
 
 .menu a.active {
-  background-color: var(--primary-color);
-  font-weight: bold;
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.25) 0%, transparent 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.menu a.active::before {
+  height: 24px;
 }
 
 .submenu {
   display: none;
-  padding-left: 20px;
-  margin-top: 10px;
+  padding-left: 40px;
+  margin-top: 8px;
 }
 
 .submenu.open {
   display: block;
+  animation: slideDown 0.3s ease-out;
+}
+
+.submenu a {
+  padding: 8px 12px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.submenu a:hover {
+  color: white;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

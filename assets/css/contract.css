@@ -1,41 +1,89 @@
 .contract-container {
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--border-color);
+}
+
+.contract-container h2 {
+  margin-bottom: 24px;
+  color: var(--text-color);
 }
 
 .contract-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .contract-card {
   border: 1px solid var(--border-color);
-  padding: 15px;
-  border-radius: 4px;
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.contract-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition);
+}
+
+.contract-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.contract-card:hover::before {
+  transform: scaleX(1);
+}
+
+.contract-card h3 {
+  margin-bottom: 12px;
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+.contract-card p {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
 .contract-status {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 6px 12px;
   border-radius: 20px;
   font-size: 12px;
-  font-weight: bold;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 12px;
 }
 
 .status-active {
-  background-color: #d1fae5;
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
   color: #065f46;
 }
 
 .status-pending {
-  background-color: #fef3c7;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
   color: #92400e;
 }
 
 .status-expired {
-  background-color: #fee2e2;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   color: #991b1b;
 }
