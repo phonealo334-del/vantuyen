@@ -1,10 +1,29 @@
-@media (max-width: 1200px) {
+/* ========== RESPONSIVE DESIGN ========== */
+
+@media (max-width: 1024px) {
   .sidebar {
     width: 200px;
   }
 
-  .search-bar input {
-    width: 200px;
+  .dashboard {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .header {
+    padding: 14px 20px;
+  }
+
+  .search-bar {
+    max-width: 250px;
+  }
+
+  .header-actions {
+    gap: 16px;
+    margin-left: 16px;
   }
 }
 
@@ -16,29 +35,243 @@
   .sidebar {
     width: 100%;
     height: auto;
-    display: flex;
-    justify-content: space-between;
+    padding: 12px;
   }
 
-  .menu ul {
-    display: flex;
-    flex-wrap: wrap;
+  .sidebar.collapsed {
+    width: 100%;
   }
 
-  .menu li {
-    margin: 0 10px;
+  .logo {
+    padding: 16px 12px;
+    margin-bottom: 12px;
+  }
+
+  .logo h2 {
+    font-size: 20px;
+  }
+
+  .menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .menu a {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .menu a span {
+    display: none;
   }
 
   .dashboard {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, 1fr);
   }
 
-  .search-bar input {
-    width: 100%;
+  .grid-container {
+    grid-template-columns: 1fr;
   }
 
   .header {
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .search-bar {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+  }
+
+  .content-area {
+    padding: 16px;
+  }
+
+  .employee-table,
+  .customer-table,
+  .transaction-table,
+  .report-table {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+
+  .employee-table th,
+  .customer-table th,
+  .transaction-table th,
+  .report-table th,
+  .employee-table td,
+  .customer-table td,
+  .transaction-table td,
+  .report-table td {
+    padding: 10px 8px;
+  }
+
+  .employee-header,
+  .product-header,
+  .customer-header,
+  .finance-header,
+  .report-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .employee-header h2,
+  .product-header h2,
+  .customer-header h2,
+  .finance-header h2,
+  .report-header h2 {
+    width: 100%;
+  }
+
+  .btn-add,
+  .btn-export {
+    width: 100%;
+  }
+
+  .employee-stats,
+  .finance-stats,
+  .report-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contract-list {
+    grid-template-columns: 1fr;
+  }
+
+  .warehouse-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .login-box {
+    padding: 40px 24px;
+    max-width: 100%;
+    margin: 16px;
+  }
+
+  .login-box h1 {
+    font-size: 24px;
+  }
+
+  .report-tabs,
+  .setting-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .report-tab,
+  .setting-tab {
+    white-space: nowrap;
+  }
+
+  .setting-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .btn-save,
+  .btn-cancel {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+
+  .card-value {
+    font-size: 28px;
+  }
+
+  .menu {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    padding: 10px;
+  }
+
+  .search-bar input {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .content-area {
+    padding: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .login-box {
+    padding: 32px 16px;
+  }
+
+  .login-box h1 {
+    font-size: 20px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .remember-forgot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+/* ========== PRINT STYLES ========== */
+@media print {
+  .sidebar,
+  .header,
+  .btn-add,
+  .btn-export,
+  .search-bar {
+    display: none;
+  }
+
+  .app-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    width: 100%;
+  }
+
+  .content-area {
+    box-shadow: none;
+    border: none;
+  }
+
+  .card,
+  .employee-container,
+  .finance-container,
+  .report-container {
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ccc;
   }
 }
