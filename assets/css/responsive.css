@@ -1,0 +1,44 @@
+@media (max-width: 1200px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .search-bar input {
+    width: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .menu ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .menu li {
+    margin: 0 10px;
+  }
+
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

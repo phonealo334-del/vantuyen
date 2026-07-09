@@ -1,0 +1,35 @@
+.finance-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.finance-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.summary-label {
+  font-size: 14px;
+  color: var(--secondary-color);
+}
+
+.summary-value {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
+.transaction-list {
+  margin-top: 20px;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinPhat ERP - Hệ Thống Quản Lý Doanh Nghiệp</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>TinPhat</h2>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li><a href="#dashboard">📊 Dashboard</a></li>
+                    <li><a href="#employee">👥 Nhân Sự</a></li>
+                    <li><a href="#contract">📄 Hợp Đồng</a></li>
+                    <li><a href="#product">📦 Sản Phẩm</a></li>
+                    <li><a href="#warehouse">🏭 Kho Hàng</a></li>
+                    <li><a href="#customer">🤝 Khách Hàng</a></li>
+                    <li><a href="#finance">💰 Tài Chính</a></li>
+                    <li><a href="#report">📈 Báo Cáo</a></li>
+                    <li><a href="#setting">⚙️ Cài Đặt</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                </div>
+                <div class="header-actions">
+                    <button class="notification">🔔</button>
+                    <div class="user-profile">
+                        <img src="assets/images/avatar.png" alt="Avatar">
+                        <span>Người Dùng</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div id="app"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/vendor/chart.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/router.js"></script>
+</body>
+</html>
